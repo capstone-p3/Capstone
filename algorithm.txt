@@ -1,1 +1,3 @@
-algorithm for this code..
+algorithm for the problem.
+
+
