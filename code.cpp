@@ -36,10 +36,11 @@ int random_gate(int N) {
 
 int main()
 {
-    int N, p;  // N: number of entry gates, p: time for a single attendee to enter any gate
+    int N, p, M;  // N: number of entry gates, p: time for a single attendee to enter any gate, M: totsl umber of attendees
     // Initialize entry gate queues
+    cin >> N >> p >> M ;
+    
     vector<EntryGateQueue> queues(N);
 
-   
     return 0;
 }
