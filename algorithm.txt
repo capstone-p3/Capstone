@@ -1,3 +1,12 @@
 algorithm for the problem.
 
 
+Entry Gate Queue: 
+This can be thought as a line of people waiting to get into a venue. Each entry gate has its own line.
+
+Main Function:
+
+People tell us how many gates there are, how many people are coming, and how quickly each person can enter.
+We set up lines at each gate.
+
+
