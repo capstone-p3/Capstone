@@ -18,8 +18,15 @@ int estimateWaitTime(int queueLength, int p)
     return queueLength * p;
 }
 
-int random_gate(int N) {
-  static int gates[N]; 
+
+// Function to estimate the wait time for the last person in a queue
+int estimateWaitTime(int queueLength, int p)
+{
+    return queueLength * p;
+}
+
+int random_gate(int N, int M) {
+   int gates[N]; 
   for (int i = 0; i < N; ++i) {
     gates[i] = i + 1; 
   }
@@ -41,6 +48,21 @@ int main()
     cin >> N >> p >> M ;
     
     vector<EntryGateQueue> queues(N);
+
+      // Randomly assign M/2 attendees to each gate
+    for (int i = 0; i < M / 2; ++i)
+    {
+        int gateNumber = random_gate(N,M);
+        queues[gateNumber].attendees.push_back(i + 1);
+    }
+
+
+     // Display the time for the last attendee to enter each gate after arranging the first M/2 attendees randomly
+    cout << "Time for the last attendee to enter each gate after arranging the first M/2 attendees randomly:" << endl;
+    for (int i = 0; i < N; ++i)
+    {
+        cout << "Gate " << (i + 1) << ": " << estimateWaitTime(queues[i].attendees.size(), p) << " minutes" << endl;
+    }
 
     return 0;
 }
