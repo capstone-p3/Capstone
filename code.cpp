@@ -19,12 +19,6 @@ int estimateWaitTime(int queueLength, int p)
 }
 
 
-// Function to estimate the wait time for the last person in a queue
-int estimateWaitTime(int queueLength, int p)
-{
-    return queueLength * p;
-}
-
 int random_gate(int N, int M) {
    int gates[N]; 
   for (int i = 0; i < N; ++i) {
