@@ -19,6 +19,23 @@ int estimateWaitTime(int queueLength, int p)
 }
 
 
+
+// remainning m/2 attendees arrangement
+void remainningattendees(vector<EntryGateQueue> &queues, int M, int n)
+{
+    int c = last_gate_entry;
+    for (int i = M / 2; i < M; i++)
+    {
+        if (c == n)
+            c = 0;
+        cout << "attendee number " << i + 1 << " go to the gate number " << c + 1 << endl;
+
+        queues[c].attendees.push_back(i + 1);
+
+        c++;
+    }
+}
+
 int random_gate(int N, int M) {
    int gates[N]; 
   for (int i = 0; i < N; ++i) {
