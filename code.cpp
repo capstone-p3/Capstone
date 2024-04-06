@@ -86,7 +86,13 @@ int main()
 {
     int N, p, M;  // N: number of entry gates, p: time for a single attendee to enter any gate, M: totsl umber of attendees
     // Initialize entry gate queues
-    cin >> N >> p >> M ;
+    
+    cout << "Enter the number of entry gates: ";
+    cin >> N;
+    cout << "Enter the total number of attendees: ";
+    cin >> M;
+    cout << "Enter the time for a single attendee to enter any gate (in minutes): ";
+    cin >> p;
     
     vector<EntryGateQueue> queues(N);
 
