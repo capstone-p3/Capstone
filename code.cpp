@@ -1,115 +1,104 @@
 #include <iostream>
-#include <algorithm>
-#include <list> // for linked list STL
-#include <vector> // for creating vector of stucture
+#include <vector>
+#include <list>// for use link list 
+#include <cmath>
+#include <ctime>
 #include <cstdlib> // for random function
 
 using namespace std;
 
-// Structure to represent an entry gate queue
-struct EntryGateQueue
-{
-    list<int> attendees; // Linked list to store attendees in the queue
+// Structure to represent an entry gate queue with additional information
+struct EntryGateQueue {
+  list<int> attendees; // Linked list to store attendees in the queue
+  int estimatedWaitTime; // Estimated wait time for the last person in the queue (in minutes)
 };
 
 // Function to estimate the wait time for the last person in a queue
-int estimateWaitTime(int queueLength, int p)
+int estimateWaitTime(int queueLength, int p) {
+  return queueLength * p;
+}
+// Function to suggest the queue with the shortest estimated wait time
+int suggestShortestQueue(const vector<EntryGateQueue>& queues) {
+  int shortestQueue = 0;
+  int shortestWaitTime = INT_MAX; // Initialize with a large value
+  for (int i = 0; i < queues.size(); ++i) {
+    if (queues[i].estimatedWaitTime < shortestWaitTime) {
+      shortestQueue = i;
+      shortestWaitTime = queues[i].estimatedWaitTime;
+    }
+  }
+  return shortestQueue;
+}
+int random_gate(int N)
 {
-    return queueLength * p;
+    return (rand() % N);
 }
 
-int last_gate_entry = 0;
+int main() {
+  srand(time(nullptr)); // seeds the random number generator with the current time, ensuring different sequences of random numbers
 
-void arrangeAttendees(vector<EntryGateQueue> &queues, int M)
+  int N, M, p; // N: number of entry gates, M: total number of attendees, p: time for a single attendee to enter any gate
+  cout << "Enter the number of entry gates: ";
+  cin >> N;
+  cout << "Enter the total number of attendees: ";
+  cin >> M;
+  cout << "Enter the time for a single attendee to enter any gate (in minutes): ";
+  cin >> p;
 
-{
-    int numGates = queues.size();
-    int attendeesPerGate = M / numGates;
-    int remainingAttendees = M % numGates;
-
-    for (int i = 0; i < numGates; ++i)
-    {
-        
-        queues[i].attendees.clear();
-
-        for (int j = 0; j < attendeesPerGate; ++j)
-        {
-            queues[i].attendees.push_back(i + 1);
-        }
-    }
-    if (remainingAttendees == 0)
-        last_gate_entry = numGates;
-    // Distribute  people who were left after arrangment above
-    int i;
-    for (i = 0; i < remainingAttendees; ++i)
-    {
-        queues[i].attendees.push_back(i + 1);
-    }
-    if (last_gate_entry == 0)
-        last_gate_entry = i;
-}
-
-
-// remainning m/2 attendees arrangement
-void remainningattendees(vector<EntryGateQueue> &queues, int M, int n)
-{
-    int c = last_gate_entry;
-    for (int i = M / 2; i < M; i++)
-    {
-        if (c == n)
-            c = 0;
-        cout << "attendee number " << i + 1 << " go to the gate number " << c + 1 << endl;
-
-        queues[c].attendees.push_back(i + 1);
-
-        c++;
-    }
-}
-
-int random_gate(int N, int M) {
-   int gates[N]; 
+  // Initialize entry gate queues with estimated wait time set to 0 initially
+  vector<EntryGateQueue> queues(N);
   for (int i = 0; i < N; ++i) {
-    gates[i] = i + 1; 
+    queues[i].estimatedWaitTime = 0;
   }
 
-  int numAttendees = M / 2;
-  for (int i = 0; i < numAttendees; ++i) {
-    int j = rand() % (i + 1); // generate random numbers between 0 and i
-    if (j < i) {
-      swap(gates[i], gates[j]); 
-    }
+  // Randomly assign M/2 attendees to each gate
+
+  for (int i = 0; i < M / 2; ++i) {
+    int gateNumber =random_gate( N);
+    queues[gateNumber].attendees.push_back(i + 1);
   }
-  return gates[numAttendees - 1]; 
-}
 
-int main()
-{
-    int N, p, M;  // N: number of entry gates, p: time for a single attendee to enter any gate, M: totsl umber of attendees
-    // Initialize entry gate queues
-    
-    cout << "Enter the number of entry gates: ";
-    cin >> N;
-    cout << "Enter the total number of attendees: ";
-    cin >> M;
-    cout << "Enter the time for a single attendee to enter any gate (in minutes): ";
-    cin >> p;
-    
-    vector<EntryGateQueue> queues(N);
-
-      // Randomly assign M/2 attendees to each gate
-    for (int i = 0; i < M / 2; ++i)
-    {
-        int gateNumber = random_gate(N,M);
-        queues[gateNumber].attendees.push_back(i + 1);
-    }
-
-
-     // Display the time for the last attendee to enter each gate after arranging the first M/2 attendees randomly
-    cout << "Time for the last attendee to enter each gate after arranging the first M/2 attendees randomly:" << endl;
     for (int i = 0; i < N; ++i)
     {
         cout << "Gate " << (i + 1) << ": " << estimateWaitTime(queues[i].attendees.size(), p) << " minutes" << endl;
     }
 
-    return 0;
+  // Update estimated wait time for each queue after initial assignment
+  for (int i = 0; i < N; ++i) {
+    queues[i].estimatedWaitTime = estimateWaitTime(queues[i].attendees.size(), p);
+  }
+    
+  // Simulate attendee entry and queue management
+  for (int attendee = M / 2; attendee < M; ++attendee) {
+    cout << "Attendee number " << attendee + 1 << " arriving." << endl;
+
+    // Suggest the queue with the shortest estimated wait time
+    int suggestedQueue = suggestShortestQueue(queues);
+    cout << "Suggested queue for attendee " << attendee + 1 << ": " << suggestedQueue + 1 << endl;
+
+    // Allow the attendee to choose a queue 
+    int chosenQueue;
+    cout << "Enter the chosen queue for attendee " << attendee + 1 << " (or same as suggested: " << suggestedQueue + 1 << "): ";
+    cin >> chosenQueue;
+    if (chosenQueue < 1 || chosenQueue > N) {
+      chosenQueue = suggestedQueue; // Default to suggested queue if invalid input
+      cout << "Invalid queue chosen. Defaulting to suggested queue " << chosenQueue + 1 << endl;
+    }
+
+    // Update queue information
+    queues[chosenQueue - 1].attendees.push_back(attendee + 1);
+    queues[chosenQueue - 1].estimatedWaitTime = estimateWaitTime(queues[chosenQueue - 1].attendees.size(), p);
+
+    // Simulate attendee entering
+    cout << " Attendee number " << attendee + 1 << " entering the stadium from queue " << chosenQueue << endl;
+
+  }
+
+  // Display final estimated wait times for each queue 
+  for (int i = 0; i < N; ++i)
+    {
+        cout << "Gate " << (i + 1) << ": " << estimateWaitTime(queues[i].attendees.size(), p) << " minutes" << endl;
+    }
+  return 0;
 }
+
