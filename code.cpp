@@ -18,6 +18,36 @@ int estimateWaitTime(int queueLength, int p)
     return queueLength * p;
 }
 
+int last_gate_entry = 0;
+
+void arrangeAttendees(vector<EntryGateQueue> &queues, int M)
+
+{
+    int numGates = queues.size();
+    int attendeesPerGate = M / numGates;
+    int remainingAttendees = M % numGates;
+
+    for (int i = 0; i < numGates; ++i)
+    {
+        
+        queues[i].attendees.clear();
+
+        for (int j = 0; j < attendeesPerGate; ++j)
+        {
+            queues[i].attendees.push_back(i + 1);
+        }
+    }
+    if (remainingAttendees == 0)
+        last_gate_entry = numGates;
+    // Distribute  people who were left after arrangment above
+    int i;
+    for (i = 0; i < remainingAttendees; ++i)
+    {
+        queues[i].attendees.push_back(i + 1);
+    }
+    if (last_gate_entry == 0)
+        last_gate_entry = i;
+}
 
 
 // remainning m/2 attendees arrangement
