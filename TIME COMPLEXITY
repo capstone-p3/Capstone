@@ -1,12 +1,32 @@
-  –TIME COMPLEXITIES–
+–TIME COMPLEXITIES–
 
- 1. estimateWaitTime(int queueLength, int p):
+1. estimateWaitTime(int queueLength, int p):
 
   This function simply performs a multiplication (queueLength * p). Multiplication operations have constant time complexity O(1).
 
 2. suggestShortestQueue(const vector<EntryGateQueue>& queues):
 
 In the worst case scenario, this function might need to iterate through all queues in the queues vector to find the one with the shortest estimated wait time. The number of iterations is directly proportional to the size of the queues vector (number of queues, N).
-Iterating through a vector has linear time complexity O(N) (in the worst case)
+Iterating through a vector has linear time complexity O(N) (in the worst case).
+
+3. The time complexity of the function random_gate(int N) is constant time  O(1).
+
+4. Main Function Portions:
+
+The main function performs various operations, so we will analyze the time complexity of specific code sections:
+
+ ** Initializing queues: 
+Iterates through N queues to set their estimated wait time. This has a linear time complexity of O(N).
+
+** Randomly assigning attendees (M/2 times):
+This loop iterates M/2 times, but within the loop, constant time operations like random number generation and adding to a list occur.
+The overall complexity is O (M/2) = O(M).
+
+** Updating estimated wait time after initial assignment:
+Similar to initializing queues, iterating through N queues leads to a linear time complexity of O(N).
+
+** Attendee arrival loop (M-M/2 iterations):
+This loop iterates through the remaining attendees (M-M/2). Within the loop, various operations happen Suggesting shortest queue: As discussed earlier, this has a worst-case complexity of O(N).
+
 
 
