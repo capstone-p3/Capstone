@@ -9,7 +9,7 @@ Define a function suggestShortestQueue that takes a vector of EntryGateQueue obj
 
 In the main function:
 
-To generate various sequences of random numbers at each run, use srand function to initialize random number generator.
+To generate various sequences of random numbers at each run, use rand function to initialize random number generator.
 Get user input for the number of entry gates (N), total number of attendees (M), and processing time per attendee (p).
 Initialize a vector queues of size N to store information for each entry gate queue. Set the initial estimated wait time for all queues to 0.
 Randomly distribute half of the attendees (M/2) to each queue. This is done by iterating M/2 times, generating a random gate number (between 0 and N-1), and adding the attendee ID to the corresponding queue's attendee list.
