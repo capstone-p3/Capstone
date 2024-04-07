@@ -9,3 +9,27 @@ estimatedWaitTime: An integer representing the estimated wait time for the last 
 
 Define a function estimateWaitTime that takes the queue length and processing time per attendee as input and returns the estimated wait time (queue length * processing time).
 
+Define a function suggestShortestQueue that takes a vector of EntryGateQueue objects as input and finds the queue with the shortest estimated wait time. It iterates through the queues and keeps track of the queue with the minimum wait time seen so far.
+
+In the main function:
+
+Seed the random number generator using srand to ensure different random sequences in each run.
+Get user input for the number of entry gates (N), total number of attendees (M), and processing time per attendee (p).
+
+Initialize a vector queues of size N to store information for each entry gate queue. Set the initial estimated wait time for all queues to 0.
+Randomly assign half of the attendees (M/2) to each queue. This is done by iterating M/2 times, generating a random gate number (between 0 and N-1), and adding the attendee ID to the corresponding queue's attendee list.
+
+Print the initial estimated wait time for each queue.
+
+2. Attendee Arrival Loop:
+
+Iterate from M/2 (attendees already assigned) to M (total attendees).
+Print a message indicating the arrival of the current attendee.
+Call suggestShortestQueue to find the queue with the shortest estimated wait time.
+Print the suggested queue for the current attendee.
+Ask the user to choose a queue for the attendee (can be the same as suggested or a different one).
+If the user enters an invalid queue number (outside the range of 1 to N), set the chosen queue to the suggested one and print a message indicating the default selection.
+Update the chosen queue's information:
+Add the attendee ID to the queue's attendee list.
+Recalculate the estimated wait time for the queue using estimateWaitTime.
+Print a message indicating the attendee entering the stadium from the chosen queue.
