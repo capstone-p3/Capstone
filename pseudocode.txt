@@ -42,7 +42,7 @@ for i = 0 to N-1
 // Randomly assign half attendees to each gate
 for i = 0 to M/2-1
   randomQueue = random_gate(N)
-  gates[randomQueue].attendees.push_back(i + 1)
+  gates[randomQueue].attendees.push_front(i + 1)
 
 // display time for last attendee in queue for each gate after randomly assigning half attendees 
 
@@ -72,7 +72,7 @@ if chosenQueue < 1 or chosenQueue > N
  chosenQueue = shortestQueue
 
    // Update queue information and estimate time 
-  gates[chosenQueue - 1].attendees.push_back(attendee + 1)
+  gates[chosenQueue - 1].attendees.push_front(attendee + 1)
   gates[chosenQueue - 1].estimatedWaitTime = estimateWaitTime(gates[chosenQueue - 1].attendees.size(), p)
 
   print "Attendee number", attendee + 1, "entering the stadium from queue", chosenQueue
