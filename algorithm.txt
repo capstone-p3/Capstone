@@ -1,7 +1,7 @@
 1. Initialization:
 
-Include necessary header files for input/output (iostream), vectors (vector), lists (list), math functions (cmath), time-related functions (ctime), and random number generation (cstdlib).
-Define a structure EntryGateQueue to represent an entry gate queue with two fields:
+Add necessary for input/output (iostream), vectors (vector), lists (list), math functions (cmath), time-related functions (ctime), and random number generation (cstdlib).
+Create a structure "EntryGateQueue" to represent an entry gate queue having two fields:
 
 attendees: A linked list to store attendee IDs in the queue.
 estimatedWaitTime: An integer representing the estimated wait time for the last person in the queue (in minutes).
@@ -32,3 +32,11 @@ Update the chosen queue's information:
 Add the attendee ID to the queue's attendee list.
 Recalculate the estimated wait time for the queue using estimateWaitTime.
 Print a message indicating the attendee entering the stadium from the chosen queue.
+
+3. Final Wait Times:
+
+Iterate through all queues and print the final estimated wait time for each queue (can be placed elsewhere in the code as well).
+4. Termination:
+
+Return 0 from the main function to indicate successful program execution.
+This algorithm simulates a scenario where attendees arrive at a stadium with multiple entry gates. It estimates wait times for each queue and suggests queues with shorter waits to arriving attendees, allowing them to choose their preferred queue.
