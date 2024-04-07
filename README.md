@@ -12,3 +12,10 @@
 The queue manager must be designed to minimize the time it takes for M people to enter the stadium. Each gate has an initial random assignment of M/2 
 people (a gate may not have anyone assigned).     ********/
 
+        GROUP MEMBERS 
+
+     Meet barasara - 202301176
+     Tapas santoki - 202301088
+     Manav kalavadiya - 202301054
+     karan makasana - 202301053
+
