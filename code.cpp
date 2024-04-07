@@ -3,6 +3,7 @@
 #include <list>// for use link list 
 #include <cmath>
 #include <ctime>
+#include <climits> // for INT_MAX
 #include <cstdlib> // for random function
 
 using namespace std;
