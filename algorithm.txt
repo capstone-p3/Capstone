@@ -3,20 +3,22 @@
 Add necessary for input/output (iostream), vectors (vector), lists (list), math functions (cmath), time-related functions (ctime), and random number generation (cstdlib).
 Create a structure "EntryGateQueue" to represent an entry gate queue having two fields:
 
-attendees: A linked list to store attendee IDs in the queue.
-estimatedWaitTime: An integer representing the estimated wait time for the last person in the queue (in minutes).
+attendees: Linked list that stores the IDs of attendees who are in the queue.
+
+estimatedWaitTime: An integer tht shows the estimated wait time for the last person in the queue (in minutes).
 
 Define a function estimateWaitTime that takes the queue length and processing time per attendee as input and returns the estimated wait time (queue length * processing time).
 
-Define a function suggestShortestQueue that takes a vector of EntryGateQueue objects as input and finds the queue with the shortest estimated wait time. It iterates through the queues and keeps track of the queue with the minimum wait time seen so far.
+Define a function suggestShortestQueue that takes a vector of EntryGateQueue objects as input and finds the queue with the shortest estimated wait time. It traverses through the queues and keeps track of the queue with the minimum wait time seen so far.
 
 In the main function:
 
-Seed the random number generator using srand to ensure different random sequences in each run.
+To generate various sequences of random numbers at each run, use srand to initialize random number generator.
+
 Get user input for the number of entry gates (N), total number of attendees (M), and processing time per attendee (p).
 
 Initialize a vector queues of size N to store information for each entry gate queue. Set the initial estimated wait time for all queues to 0.
-Randomly assign half of the attendees (M/2) to each queue. This is done by iterating M/2 times, generating a random gate number (between 0 and N-1), and adding the attendee ID to the corresponding queue's attendee list.
+Randomly distribute half of the attendees (M/2) to each queue. This is done by iterating M/2 times, generating a random gate number (between 0 and N-1), and adding the attendee ID to the corresponding queue's attendee list.
 
 Print the initial estimated wait time for each queue.
 
