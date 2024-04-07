@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <list> // for use link list 
+#include <list> // for use linked list 
 #include <cmath>
 #include <ctime>
 #include <climits> // for INT_MAX
