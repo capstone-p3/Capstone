@@ -18,4 +18,11 @@ people (a gate may not have anyone assigned).     ********/
      Tapas santoki - 202301088
      Manav kalavadiya - 202301054
      karan makasana - 202301053
+     
+        CONTRIBUTION 
+     meet barasara - 38 %
+     Manav kalavadiya - 22 %
+     karan makasana - 20 %
+     tapas santoki - 20 %
+
 
