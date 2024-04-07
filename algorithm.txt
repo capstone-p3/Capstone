@@ -1,3 +1,89 @@
 algorithm for the problem.
 
+##  Include necessary libraries.
+
+## STRUCTURE ENTRYGATE QUEUE
+// Members
+  attendees: list of integers (represents attendee IDs)
+  estimatedWaitTime: integer (represents estimated wait time in minutes)
+
+## FUNCTION ESTIMATEWAITTIME(queueLength, p)
+  // Simple wait time estimation (queue length * processing time per attendee)
+  return queueLength * p
+
+## FUNCTION SUGGESTSHOETESTQUEUE(queues)
+  shortestQueue = 0
+  shortestWaitTime = INFINITY 
+  for i = 0 to queues.length - 1
+    if queues[i].estimatedWaitTime < shortestWaitTime
+      shortestQueue = i
+      shortestWaitTime = queues[i].estimatedWaitTime
+    endif
+    go for next iteration 
+  return shortestQueue
+
+## FUNCTION RANDOM_GATE(N)
+  // Generate a random integer between 0 and N-1
+  return random(0, N-1)
+
+## MAIN FUNCTION ()
+
+// Initialize variables
+N = number of entry gates
+M = total number of attendees
+p = time for a single attendee to enter any gate ( in minuutes )
+
+gates = vector of size N (EntryGateQueue)
+
+// Initialize entry gate queues with estimated wait time set to 0 initially
+for i = 0 to N-1
+  gates[i].estimatedWaitTime = 0
+
+// Randomly assign half attendees to each gate
+for i = 0 to M/2-1
+  randomQueue = random_gate(N)
+  gates[randomQueue].attendees.push_back(i + 1)
+
+// display time for last attendee in queue for each gate after randomly assigning half attendees 
+
+for i = 0 to N - 1  
+print " Gate " , i+1 ,  estimateWaitTime(queues[i].attendees.size(), p) , " minutes "
+
+// Update initial wait times for all queues
+for i = 0 to N-1
+  gates[i].estimatedWaitTime = estimateWaitTime(gates[i].attendees.size(), p)
+
+// Simulate attendee arrival loop
+for attendee = M/2 to M-1
+  // Suggest shortest queue
+  shortestQueue = suggestShortestQueue(gates)
+
+// Display suggested queue for attendees
+  print "Attendee number", attendee + 1, "arriving."
+  print "Suggested queue:", shortestQueue + 1
+
+ // Allow the attendee to choose a queue
+
+input chosenQueue
+
+if chosenQueue < 1 or chosenQueue > N 
+    print "Invalid queue chosen. Defaulting to suggested queue", chosenQueue + 1
+// default chosen queue is suggested queue 
+ chosenQueue = shortestQueue
+
+   // Update queue information and estimate time 
+  gates[chosenQueue - 1].attendees.push_back(attendee + 1)
+  gates[chosenQueue - 1].estimatedWaitTime = estimateWaitTime(gates[chosenQueue - 1].attendees.size(), p)
+
+  print "Attendee number", attendee + 1, "entering the stadium from queue", chosenQueue
+
+// Display final wait times
+for i = 0 to N-1
+  print "Gate", i + 1, ":", estimateWaitTime(gates[i].attendees.size(), p), "minutes"
+
+ end main ()
+
+
+
+
 
