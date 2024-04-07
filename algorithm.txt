@@ -1,14 +1,3 @@
 algorithm for the problem.
 
 
-Entry Gate Queue: 
-This can be thought as a line of people waiting to get into a venue. Each entry gate has its own line.
-As new people arrive, they choose the queue with the shortest waiting time (calculated based on the number of people already in the queue).
-
-
-Main Function:
-
-People tell us how many gates there are, how many people are coming, and how quickly each person can enter.
-We set up lines at each gate.
-A function will choose random gates for new arrivel attendees.
-Calculate the time for each gate baseed on the number of attendees in queue.
