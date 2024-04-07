@@ -2,29 +2,22 @@
 
 Add necessary for input/output (iostream), vectors (vector), lists (list), math functions (cmath), time-related functions (ctime), and random number generation (cstdlib).
 Create a structure "EntryGateQueue" to represent an entry gate queue having two fields:
-
 attendees: Linked list that stores the IDs of attendees who are in the queue.
-
-estimatedWaitTime: An integer tht shows the estimated wait time for the last person in the queue (in minutes).
-
+estimatedWaitTime: An integer that shows the estimated wait time for the last person in the queue (in minutes).
 Define a function estimateWaitTime that takes the queue length and processing time per attendee as input and returns the estimated wait time (queue length * processing time).
-
 Define a function suggestShortestQueue that takes a vector of EntryGateQueue objects as input and finds the queue with the shortest estimated wait time. It traverses through the queues and keeps track of the queue with the minimum wait time seen so far.
 
 In the main function:
 
-To generate various sequences of random numbers at each run, use srand to initialize random number generator.
-
+To generate various sequences of random numbers at each run, use srand function to initialize random number generator.
 Get user input for the number of entry gates (N), total number of attendees (M), and processing time per attendee (p).
-
 Initialize a vector queues of size N to store information for each entry gate queue. Set the initial estimated wait time for all queues to 0.
 Randomly distribute half of the attendees (M/2) to each queue. This is done by iterating M/2 times, generating a random gate number (between 0 and N-1), and adding the attendee ID to the corresponding queue's attendee list.
-
 Print the initial estimated wait time for each queue.
 
 2. Attendee Arrival Loop:
 
-Iterate from M/2 (attendees already assigned) to M (total attendees).
+Start the loop from M/2 (attendees already assigned) and go up to M (total attendees).
 Print a message indicating the arrival of the current attendee.
 Call suggestShortestQueue to find the queue with the shortest estimated wait time.
 Print the suggested queue for the current attendee.
@@ -37,8 +30,9 @@ Print a message indicating the attendee entering the stadium from the chosen que
 
 3. Final Wait Times:
 
-Iterate through all queues and print the final estimated wait time for each queue (can be placed elsewhere in the code as well).
+Iterate through all queues and print the final estimated wait time for each queue (can be placed at any other place in the code as well).
+
 4. Termination:
 
 Return 0 from the main function to indicate successful program execution.
-This algorithm simulates a scenario where attendees arrive at a stadium with multiple entry gates. It estimates wait times for each queue and suggests queues with shorter waits to arriving attendees, allowing them to choose their preferred queue.
+This algorithm simulates a scenario where attendees arrive at a stadium with multiple entry gates. It calculate wait times for each queue and suggests queues with shorter wait time to arriving attendees, allowing them to choose the queue which they prefer.
