@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <list>// for use link list 
+#include <list> // for use link list 
 #include <cmath>
 #include <ctime>
 #include <climits> // for INT_MAX
@@ -18,6 +18,7 @@ struct EntryGateQueue {
 int estimateWaitTime(int queueLength, int p) {
   return queueLength * p;
 }
+
 // Function to suggest the queue with the shortest estimated wait time
 int suggestShortestQueue(const vector<EntryGateQueue>& queues) {
   int shortestQueue = 0;
@@ -30,6 +31,8 @@ int suggestShortestQueue(const vector<EntryGateQueue>& queues) {
   }
   return shortestQueue;
 }
+
+// For arrange the first M/2 attendees in random gates
 int random_gate(int N)
 {
     return (rand() % N);
