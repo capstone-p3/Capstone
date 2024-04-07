@@ -59,7 +59,7 @@ int main() {
 
   for (int i = 0; i < M / 2; ++i) {
     int gateNumber =random_gate( N);
-    queues[gateNumber].attendees.push_back(i + 1);
+    queues[gateNumber].attendees.push_front(i + 1);
   }
 
     for (int i = 0; i < N; ++i)
@@ -90,7 +90,7 @@ int main() {
     }
 
     // Update queue information
-    queues[chosenQueue - 1].attendees.push_back(attendee + 1);
+    queues[chosenQueue - 1].attendees.push_front(attendee + 1);
     queues[chosenQueue - 1].estimatedWaitTime = estimateWaitTime(queues[chosenQueue - 1].attendees.size(), p);
 
     // Simulate attendee entering
