@@ -1,3 +1,12 @@
   –TIME COMPLEXITIES–
 
- 1. estimateWaitTime(int queueLength, int p)
+ 1. estimateWaitTime(int queueLength, int p):
+
+  This function simply performs a multiplication (queueLength * p). Multiplication operations have constant time complexity O(1).
+
+2. suggestShortestQueue(const vector<EntryGateQueue>& queues):
+
+In the worst case scenario, this function might need to iterate through all queues in the queues vector to find the one with the shortest estimated wait time. The number of iterations is directly proportional to the size of the queues vector (number of queues, N).
+Iterating through a vector has linear time complexity O(N) (in the worst case)
+
+
