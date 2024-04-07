@@ -1,2 +1,3 @@
   –TIME COMPLEXITIES–
 
+ 1. estimateWaitTime(int queueLength, int p)
