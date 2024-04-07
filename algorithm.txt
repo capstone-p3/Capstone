@@ -1,1 +1,11 @@
 
+1. Initialization:
+
+Include necessary header files for input/output (iostream), vectors (vector), lists (list), math functions (cmath), time-related functions (ctime), and random number generation (cstdlib).
+Define a structure EntryGateQueue to represent an entry gate queue with two fields:
+
+attendees: A linked list to store attendee IDs in the queue.
+estimatedWaitTime: An integer representing the estimated wait time for the last person in the queue (in minutes).
+
+Define a function estimateWaitTime that takes the queue length and processing time per attendee as input and returns the estimated wait time (queue length * processing time).
+
