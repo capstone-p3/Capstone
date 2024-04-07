@@ -22,11 +22,29 @@ Iterates through N queues to set their estimated wait time. This has a linear ti
 This loop iterates M/2 times, but within the loop, constant time operations like random number generation and adding to a list occur.
 The overall complexity is O (M/2) = O(M).
 
-** Updating estimated wait time after initial assignment:
+** Updating estimated wait time a fter initial assignment:
 Similar to initializing queues, iterating through N queues leads to a linear time complexity of O(N).
 
-** Attendee arrival loop (M-M/2 iterations):
-This loop iterates through the remaining attendees (M-M/2). Within the loop, various operations happen Suggesting shortest queue: As discussed earlier, this has a worst-case complexity of O(N).
+** Attendee arrival loop (M/2-M iterations):
+This loop iterates through the remaining attendees (M/2-M). Within the loop, various operations happen Suggesting shortest queue: As discussed earlier, this has a worst-case complexity of O(N).
+User input and updating queue: These are considered constant time operations  nm 
+Printing messages: Constant time.
+queues[chosenQueue - 1].attendees.push_back(attendee + 1) : This statement adds an element (attendee ID) to the end of a linked list (attendee).
+The time complexity of adding to the end of a linked list is generally considered O(1) (constant time) on average.
+queues[chosenQueue - 1].estimatedWaitTime = estimateWaitTime(queues[chosenQueue - 1].attendees.size(), p):
+This calls the estimateWaitTime function, which has a constant time complexity of O(1) as discussed earlier (simple multiplication).
+Since the dominant operation inside the loop can be suggestShortestQueue (O(N)), the overall loop complexity becomes O(M * N) in the worst case.
+
+** Final wait times: iterating through N queues leads to linear time complexity O(N).
+
+************ OVERALL TIME COMPLEXITY ******************
+
+When considering a typical scenario with a larger number of attendees (M) compared to queues (N), the overall complexity can be approximated as:
+O(M).
+However, if the number of queues (N) becomes very large compared to attendees (M), the final wait time calculation might become more significant ,
+leading to an overall complexity closer to O(N).
+
+
 
 
 
